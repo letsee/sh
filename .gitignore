@@ -26,6 +26,8 @@ backup/
 target/
 dist/
 
+backup
+
 # JetBrains IDE
 .idea/
 

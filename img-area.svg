@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="336" height="470" viewBox="0 0 336 470">
+    <defs>
+        <style>
+            .cls-1{fill:#72e045}
+        </style>
+    </defs>
+    <g id="img_area" transform="translate(-20 -176)">
+        <path id="topleft" d="M-415 32V0h32v4h-28v28z" class="cls-1" transform="translate(435 176)"/>
+        <path id="bottomright" d="M-415 32V0h32v4h-28v28z" class="cls-1" transform="rotate(180 -29.5 323)"/>
+        <path id="topright" d="M-415 32V0h32v4h-28v28z" class="cls-1" transform="rotate(90 -117.5 473.5)"/>
+        <path id="bottomleft" d="M-415 32V0h32v4h-28v28z" class="cls-1" transform="rotate(-90 125.5 105.5)"/>
+    </g>
+</svg>
