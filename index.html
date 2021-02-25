@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>SH</title>
+
+    <link rel="stylesheet" href="main.css"/>
+
+    <script src="https://developer.letsee.io/api/webar?key=12ccc6bcd676db20370d1b07d8204ef81c4d1410955dd99e8d03a7f1991f2966"></script>
+
+    <style media="place" type="text/css">
+        #container {
+            -letsee-target: uri('sh.json');
+            width: 300px;
+            height: 400px;
+        }
+    </style>
+
+    <style>
+        .animateImg {
+            display: flex;
+            align-content: center;
+            align-items: center;
+            background: no-repeat 50%/100%;
+            height: 120%;
+            margin-top: 25%;
+            width: 100%;
+        }
+        #inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+        #btn_div {
+            width: 100%;
+            height: 40px;
+            position: fixed;
+            margin-bottom: 32px;
+            bottom: 0;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            z-index: 300;
+            visibility: hidden;
+        }
+        .btn_more {
+            width: 200px;
+            height: 60px;
+            object-fit: contain;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="container">
+    <div id="inner">
+        <div class="animateImg"></div>
+    </div>
+</div>
+<div id="btn_div">
+    <svg class="btn_more" id="btn_more" xmlns="http://www.w3.org/2000/svg" width="158" height="62" viewBox="0 0 158 62">
+        <defs>
+            <filter id="xdxotu3hsa" width="158" height="62" x="0" y="0" filterUnits="userSpaceOnUse">
+                <feOffset dx="3" dy="3"/>
+                <feGaussianBlur result="blur" stdDeviation="3"/>
+                <feFlood flood-opacity=".302"/>
+                <feComposite in2="blur" operator="in"/>
+                <feComposite in="SourceGraphic"/>
+            </filter>
+            <filter id="w2ozhmi69b" width="92" height="30" x="21.5" y="13.5" filterUnits="userSpaceOnUse">
+                <feOffset/>
+                <feGaussianBlur result="blur-2" stdDeviation="1.5"/>
+                <feFlood flood-opacity=".161"/>
+                <feComposite in2="blur-2" operator="in"/>
+                <feComposite in="SourceGraphic"/>
+            </filter>
+            <filter id="vpf6fgvf9c" width="17.782" height="22.198" x="113.5" y="16.5" filterUnits="userSpaceOnUse">
+                <feOffset/>
+                <feGaussianBlur result="blur-3" stdDeviation="1.5"/>
+                <feFlood flood-opacity=".161"/>
+                <feComposite in2="blur-3" operator="in"/>
+                <feComposite in="SourceGraphic"/>
+            </filter>
+        </defs>
+        <g>
+            <g filter="url(#xdxotu3hsa)" transform="translate(-82 -122) translate(82 122)">
+                <path fill="#fd9903" d="M0 0H140V44H0z" transform="translate(6 6)"/>
+            </g>
+            <g filter="url(#w2ozhmi69b)" transform="translate(-82 -122) translate(82 122)">
+                <text fill="#fff" font-family="AppleSDGothicNeo-ExtraBold, Apple SD Gothic Neo" font-size="18px" font-weight="800" transform="translate(26 34)">
+                    <tspan x="0" y="0">더 알아보기</tspan>
+                </text>
+            </g>
+            <g filter="url(#vpf6fgvf9c)" transform="translate(-82 -122) translate(82 122)">
+                <path fill="#fff" d="M253.846 147.488l6.6 6.6-6.6 6.6-2.183-2.183 4.415-4.415-4.415-4.415z" transform="translate(-133.66 -126.49)"/>
+            </g>
+        </g>
+    </svg>
+
+</div>
+
+<script>
+
+    let count = 3000;
+    const AllImageCount = 3286;
+
+    function changeImage(){
+        count++;
+        if(AllImageCount < count) count = 3000;
+        document.querySelector('.animateImg').setAttribute('class', `animateImg img-${count}`)
+    }
+
+    letsee.ready(() => {
+        letsee.start();
+        letsee.onTrackMove(() => {
+            changeImage();
+        });
+        document.getElementById('btn_more').addEventListener('click', () => {
+            location.href = 'https://innovative.sh/mosstower/';
+        });
+        setTimeout(() => {
+            document.getElementById('btn_div').style.visibility = 'visible';
+        }, 3000);
+    });
+    letsee.init();
+
+
+</script>
+
+</body>
+</html>
