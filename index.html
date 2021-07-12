@@ -1,103 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>SH</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <title>SH</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:100,300,400,700&display=swap" rel="stylesheet">
-    <script src="https://s-developer.letsee.io/api/webar?key=fe14cba3ff279a7afe53bc08c2bbc190d44d53949730e7dd5f3e0cd890ec8431"></script>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:100,300,400,700&display=swap" rel="stylesheet">
+  <script
+    src="https://s-developer.letsee.io/api/webar?key=fe14cba3ff279a7afe53bc08c2bbc190d44d53949730e7dd5f3e0cd890ec8431"></script>
+  <style media="place" type="text/css">
+    #container {
+      -letsee-target: uri('https://d-developer.letsee.io/api-tm/target-manager/target-uid/60e6b15e821c70ad32ca9874');
+      width: 135px;
+      height: 190px;
+    }
+  </style>
 
-    <style media="place" type="text/css">
-        #container {
-	          -letsee-target: uri('https://d-developer.letsee.io/api-tm/target-manager/target-uid/60e6b15e821c70ad32ca9874');
-            width: 135px;
-            height: 190px;
-        }
-    </style>
+  <style>
+    #btn_div {
+      width: 100%;
+      height: 40px;
+      position: fixed;
+      margin-bottom: 32px;
+      bottom: 0;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      z-index: 600;
+      visibility: hidden;
+    }
 
-    <style>
-        #btn_div {
-            width: 100%;
-            height: 40px;
-            position: fixed;
-            margin-bottom: 32px;
-            bottom: 0;
-            display: flex;
-            align-content: center;
-            justify-content: center;
-            z-index: 600;
-            visibility: hidden;
-        }
-        .btn_more {
-            width: 200px;
-            height: 60px;
-            object-fit: contain;
-        }
-        #apng {
-            display: flex;
-            align-content: center;
-            align-items: center;
-            background: no-repeat 50%/100%;
-            height: 125%;
-            width: 100%;
-            visibility: hidden;
-        }
-        #loading_spinner_div {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-        }
-        #loading_spinner {
-            position: absolute;
-            width: 80%;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-        }
-        #guide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-            visibility: hidden;
-            background-image: uri("./img_area.png");
-        }
-        #guide_msg {
-            width: 220px;
-            height: 55px;
-            text-shadow: 0 0 3px #000000;
-            font-family: "Noto Sans KR", sans-serif;
-            font-size: 18px;
-            font-weight: bold;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.56;
-            letter-spacing: normal;
-            text-align: center;
-            color: #ffffff;
-        }
-        #guide_inner_1 {
-            position: absolute;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-            height: 470px;
-            box-shadow: 0 0 0 100vmax rgba(139,138,144, .7);
-        }
-        #guide_inner_2 {
-            position: absolute;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-        }
-        img {
-            /*vertical-align: top;*/
-        }
-    </style>
+    .btn_more {
+      width: 200px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    #apng {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      background: no-repeat 50%/100%;
+      height: 125%;
+      width: 100%;
+      visibility: hidden;
+    }
+
+    #loading_spinner_div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+    }
+
+    #loading_spinner {
+      position: absolute;
+      width: 80%;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+    }
+
+    #guide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      visibility: hidden;
+      background-image: uri("./img_area.png");
+    }
+
+    #guide_msg {
+      width: 220px;
+      height: 55px;
+      text-shadow: 0 0 3px #000000;
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.56;
+      letter-spacing: normal;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    #guide_inner_1 {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      height: 470px;
+      box-shadow: 0 0 0 100vmax rgba(139, 138, 144, .7);
+    }
+
+    #guide_inner_2 {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+    }
+
+    img {
+      /*vertical-align: top;*/
+    }
+  </style>
 
 </head>
 <body>
@@ -179,23 +188,31 @@
 
   console.warn('start', new Date(Date.now()).toISOString());
 
-  let loading_spinner = document.getElementById('loading_spinner');
-  let guide = document.getElementById('guide');
   let isLoaded = false;
   let intervalId;
-  let apng = document.getElementById('apng');
+  let isTracking = false;
+
+  const loading_spinner = document.getElementById('loading_spinner');
+  const guide = document.getElementById('guide');
+  const apng = document.getElementById('apng');
 
   letsee.ready(() => {
     letsee.start();
     letsee.onTrackStart(() => {
+      isTracking = true;
       guide.style.visibility = 'hidden';
       guide.style['z-index'] = 0;
-      if (apng && isLoaded) apng.style.visibility = 'visible';
+      if (apng && isLoaded) {
+        apng.style.visibility = 'visible';
+      }
     });
     letsee.onTrackEnd(() => {
-      if (apng && isLoaded) apng.style.visibility = 'hidden';
+      if (apng && isLoaded) {
+        apng.style.visibility = 'hidden';
+      }
       guide.style.visibility = 'visible';
       guide.style['z-index'] = 500;
+      isTracking = false;
     });
     letsee.onTrackMove(() => {
       guide.style.visibility = 'hidden';
@@ -206,12 +223,15 @@
     });
 
     intervalId = setInterval(() => {
-      const {playing} = letsee.videoManager();
+      const { playing } = letsee.videoManager();
       if (playing && !isLoaded) {
-        apng.src = 'https://png.arstreet.sh/apng/animated_540.png';
+        apng.src = "https://png.arstreet.sh/apng/animated_540.png";
         apng.onload = () => {
           console.warn('apng is loaded', new Date(Date.now()).toISOString());
           isLoaded = true;
+          if (isTracking) {
+            apng.style.visibility = 'visible';
+          }
         };
         loading_spinner.style.visibility = 'hidden';
         guide.style.visibility = 'visible';
@@ -221,6 +241,23 @@
       }
     }, 500);
   });
+
+  intervalId = setInterval(() => {
+    const { playing } = letsee.videoManager();
+    if (playing && !isLoaded) {
+      apng.src = 'https://png.arstreet.sh/apng/animated_540.png';
+      apng.onload = () => {
+        console.warn('apng is loaded', new Date(Date.now()).toISOString());
+        isLoaded = true;
+      };
+      loading_spinner.style.visibility = 'hidden';
+      guide.style.visibility = 'visible';
+      guide.style['z-index'] = 500;
+      document.getElementById('btn_div').style.visibility = 'visible';
+      console.warn('video is played', new Date(Date.now()).toISOString());
+    }
+  }, 500);
+
   letsee.init();
 
 </script>
