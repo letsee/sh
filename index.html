@@ -6,7 +6,7 @@
     <title>SH</title>
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans:100,300,400,700&display=swap" rel="stylesheet">
-    <script src="https://s-developer.letsee.io/api/webar?key=fe14cba3ff279a7afe53bc08c2bbc190d44d53949730e7dd5f3e0cd890ec8431"></script>
+    <script src="https://d-developer.letsee.io/api/webar?key=2e0270077b38ed0c1cb96e40f1b7b509baaf025d55fc8687ad2b727c0de0dc9d"></script>
 
     <style media="place" type="text/css">
         #container {
@@ -176,33 +176,60 @@
 </div>
 
 <script>
+    console.warn('start', new Date(Date.now()).toISOString());
 
-  console.warn('start', new Date(Date.now()).toISOString());
+    let isLoaded = false;
+    let intervalId;
+    let isTracking = false;
 
-  let loading_spinner = document.getElementById('loading_spinner');
-  let guide = document.getElementById('guide');
-  let isLoaded = false;
-  let intervalId;
-  let apng = document.getElementById('apng');
+    const loading_spinner = document.getElementById('loading_spinner');
+    const guide = document.getElementById('guide');
+    const apng = document.getElementById('apng');
 
-  letsee.ready(() => {
-    letsee.start();
-    letsee.onTrackStart(() => {
-      guide.style.visibility = 'hidden';
-      guide.style['z-index'] = 0;
-      if (apng && isLoaded) apng.style.visibility = 'visible';
-    });
-    letsee.onTrackEnd(() => {
-      if (apng && isLoaded) apng.style.visibility = 'hidden';
-      guide.style.visibility = 'visible';
-      guide.style['z-index'] = 500;
-    });
-    letsee.onTrackMove(() => {
-      guide.style.visibility = 'hidden';
-      guide.style['z-index'] = 0;
-    });
-    document.getElementById('btn_more').addEventListener('click', () => {
-      location.href = 'https://innovative.sh/mosstower/';
+    letsee.ready(() => {
+        letsee.start();
+        letsee.onTrackStart(() => {
+            isTracking = true;
+            guide.style.visibility = 'hidden';
+            guide.style['z-index'] = 0;
+            if (apng && isLoaded) {
+                apng.style.visibility = 'visible';
+            }
+        });
+        letsee.onTrackEnd(() => {
+            if (apng && isLoaded) {
+                apng.style.visibility = 'hidden';
+            }
+            guide.style.visibility = 'visible';
+            guide.style['z-index'] = 500;
+            isTracking = false;
+        });
+        letsee.onTrackMove(() => {
+            guide.style.visibility = 'hidden';
+            guide.style['z-index'] = 0;
+        });
+        document.getElementById('btn_more').addEventListener('click', () => {
+            location.href = 'https://innovative.sh/mosstower/';
+        });
+
+        intervalId = setInterval(() => {
+            const { playing } = letsee.videoManager();
+            if (playing && !isLoaded) {
+                apng.src = "https://png.arstreet.sh/apng/animated_540.png";
+                apng.onload = () => {
+                    console.warn('apng is loaded', new Date(Date.now()).toISOString());
+                    isLoaded = true;
+                    if (isTracking) {
+                        apng.style.visibility = 'visible';
+                    }
+                };
+                loading_spinner.style.visibility = 'hidden';
+                guide.style.visibility = 'visible';
+                guide.style['z-index'] = 500;
+                document.getElementById('btn_div').style.visibility = 'visible';
+                console.warn('video is played', new Date(Date.now()).toISOString());
+            }
+        }, 500);
     });
 
     intervalId = setInterval(() => {
@@ -220,7 +247,7 @@
         console.warn('video is played', new Date(Date.now()).toISOString());
       }
     }, 500);
-  });
+    
   letsee.init();
 
 </script>
