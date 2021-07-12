@@ -26,8 +26,11 @@ backup/
 target/
 dist/
 
+<<<<<<< HEAD
 backup
 
+=======
+>>>>>>> 0482481a5af9f821ed49a23e511d55d88caaf013
 # JetBrains IDE
 .idea/
 
