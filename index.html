@@ -6,8 +6,7 @@
   <title>SH</title>
 
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans:100,300,400,700&display=swap" rel="stylesheet">
-  <script
-    src="https://s-developer.letsee.io/api/webar?key=fe14cba3ff279a7afe53bc08c2bbc190d44d53949730e7dd5f3e0cd890ec8431"></script>
+  <script src="https://s-developer.letsee.io/api/webar?key=fe14cba3ff279a7afe53bc08c2bbc190d44d53949730e7dd5f3e0cd890ec8431"></script>
   <style media="place" type="text/css">
     #container {
       -letsee-target: uri('https://d-developer.letsee.io/api-tm/target-manager/target-uid/60e6b15e821c70ad32ca9874');
@@ -188,7 +187,7 @@
 
   console.warn('start', new Date(Date.now()).toISOString());
 
-  let isLoaded = false;
+  let isPngLoaded = false;
   let intervalId;
   let isTracking = false;
 
@@ -202,12 +201,14 @@
       isTracking = true;
       guide.style.visibility = 'hidden';
       guide.style['z-index'] = 0;
-      if (apng && isLoaded) {
+      console.log('1111');
+      if (apng && isPngLoaded) {
+        console.log('2222');
         apng.style.visibility = 'visible';
       }
     });
     letsee.onTrackEnd(() => {
-      if (apng && isLoaded) {
+      if (apng && isPngLoaded) {
         apng.style.visibility = 'hidden';
       }
       guide.style.visibility = 'visible';
@@ -224,12 +225,14 @@
 
     intervalId = setInterval(() => {
       const { playing } = letsee.videoManager();
-      if (playing && !isLoaded) {
+      if (playing && !isPngLoaded) {
         apng.src = "https://png.arstreet.sh/apng/animated_540.png";
         apng.onload = () => {
-          console.warn('apng is loaded', new Date(Date.now()).toISOString());
-          isLoaded = true;
+          console.error('apng is loaded', new Date(Date.now()).toISOString());
+          isPngLoaded = true;
           if (isTracking) {
+            console.log('33333');
+            console.error('png loaded 일때 Tracking 중이면 apng visibility visibile로 설정');
             apng.style.visibility = 'visible';
           }
         };
@@ -237,26 +240,9 @@
         guide.style.visibility = 'visible';
         guide.style['z-index'] = 500;
         document.getElementById('btn_div').style.visibility = 'visible';
-        console.warn('video is played', new Date(Date.now()).toISOString());
       }
     }, 500);
   });
-
-  intervalId = setInterval(() => {
-    const { playing } = letsee.videoManager();
-    if (playing && !isLoaded) {
-      apng.src = 'https://png.arstreet.sh/apng/animated_540.png';
-      apng.onload = () => {
-        console.warn('apng is loaded', new Date(Date.now()).toISOString());
-        isLoaded = true;
-      };
-      loading_spinner.style.visibility = 'hidden';
-      guide.style.visibility = 'visible';
-      guide.style['z-index'] = 500;
-      document.getElementById('btn_div').style.visibility = 'visible';
-      console.warn('video is played', new Date(Date.now()).toISOString());
-    }
-  }, 500);
 
   letsee.init();
 
