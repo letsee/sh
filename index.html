@@ -215,7 +215,7 @@
         intervalId = setInterval(() => {
             const { playing } = letsee.videoManager();
             if (playing && !isLoaded) {
-                apng.src = "https://png.arstreet.sh/apng/animated_540.png";
+                apng.src = "./animated_540.png";
                 apng.onload = () => {
                     console.warn('apng is loaded', new Date(Date.now()).toISOString());
                     isLoaded = true;
@@ -235,7 +235,7 @@
     intervalId = setInterval(() => {
       const {playing} = letsee.videoManager();
       if (playing && !isLoaded) {
-        apng.src = 'https://png.arstreet.sh/apng/animated_540.png';
+        apng.src = './animated_540.png';
         apng.onload = () => {
           console.warn('apng is loaded', new Date(Date.now()).toISOString());
           isLoaded = true;
